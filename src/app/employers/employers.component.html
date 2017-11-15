@@ -1,3 +1,44 @@
-<p>
-  employers works!
-</p>
+<h3>Employers</h3>
+<hr>
+<table class="table table-stripped table-bordered">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Username</th>
+			<th>E-mail</th>
+			<th>Address</th>
+			<th>Phone</th>
+			<th>Website</th>
+			<th>Company</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let employer of users | async">
+			<td>
+				{{ employer.id }}
+			</td>
+			<td>
+				{{ employer.name }}
+			</td>
+			<td>
+				{{ employer.username }}
+			</td>
+			<td>
+				{{ employer.email }}
+			</td>
+			<td>
+				{{ employer.address.street }}
+			</td>
+			<td>
+				{{ employer.phone }}
+			</td>
+			<td>
+				{{ employer.website }}
+			</td>
+			<td>
+				{{ employer.company.name }}
+			</td>
+		</tr>
+	</tbody>
+</table>

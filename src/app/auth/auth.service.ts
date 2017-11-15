@@ -13,7 +13,9 @@ export class AuthService {
 	registerUser(email, password) {
 		firebase.auth().createUserWithEmailAndPassword(email, password)
 		   .then(
-		   		response => this.router.navigate['/login']
+		   		response => {
+		   			this.router.navigate(['/login']);
+		   		}
 		   	)
 		   .catch(
 				error => console.log(error)
@@ -27,7 +29,12 @@ export class AuthService {
 				response => {
 					firebase.auth().currentUser.getToken()
 						.then(
-							(token: string) => this.token = token
+							(token: string) => {
+								localStorage.setItem('token',this.token = token);
+								localStorage.setItem('uid', firebase.auth().currentUser.uid);
+								localStorage.setItem('email',firebase.auth().currentUser.email);
+								this.router.navigate(['/home']);
+							}
 						)
 				}
 			)
@@ -36,12 +43,17 @@ export class AuthService {
 	// logout user
 	logout() {
 		firebase.auth().signOut();
-		this.token = null;
+		localStorage.clear();
+		this.router.navigate(['/login'])
 	}
 
 	// check if its authenitcated user
 	isAutheticated() {
-		return this.token != null;
+		return localStorage.getItem('token') != null;
+	}
+
+	getToken() {
+		return localStorage.getItem('token')
 	}
 
 

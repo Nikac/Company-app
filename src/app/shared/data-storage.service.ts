@@ -7,12 +7,24 @@ import { User } from '../shared/user.model';
 @Injectable()
 
 export class DataStorageService {
-	user: User;
-	users: User[];
+	users: any[] = [];
 
 	constructor(private http: Http) {}
 
-	saveUser(user: User) {
-		return this.http.post('https://employers-d758c.firebaseio.com/employers.json', this.user);
+	getUsers() {
+		return this.http.get('https://jsonplaceholder.typicode.com/users')
+			.map(
+				(response: Response) => {
+					this.users = response.json();
+					return this.users;
+				}
+			)
 	}
+
+	storageUsersToDB(users: any[]) {
+		return this.http.put('https://employers-d758c.firebaseio.com/employers.json', this.users);
+				
+	}
+
+	
 }

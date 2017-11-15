@@ -4,7 +4,7 @@
       <a class="navbar-brand" routerLink="/">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li routerLinkActive="active"><a routerLink="/">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
       <li routerLinkActive="active"><a routerLink="/employers">Employers</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
@@ -12,7 +12,7 @@
         <li routerLinkActive="active"><a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
         <li routerLinkActive="active"><a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ng-template> 
-      <li routerLinkActive="active" *ngIf="authService.isAutheticated()"><a (click)="authService.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      <li routerLinkActive="active" *ngIf="authService.isAutheticated()"><a style="cursor: pointer;" (click)="authService.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
   </div>
 </nav>

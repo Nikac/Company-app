@@ -12,6 +12,7 @@ import { EmployersComponent } from './employers/employers.component';
 import { AppRoutingModule } from './app-routing.model';
 import { AuthService } from './auth/auth.service';
 import { DataStorageService } from './shared/data-storage.service';
+import { AuthGuard } from './auth/auth-guard.service'; 
 
 @NgModule({
   declarations: [
@@ -25,9 +26,10 @@ import { DataStorageService } from './shared/data-storage.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [AuthService, DataStorageService],
+  providers: [AuthService, DataStorageService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

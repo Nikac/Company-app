@@ -1,3 +1,3 @@
 export class User {
-	constructor(public name: string, public email: string, public password: string, public position: string, public gender: string, public salary: string) {}
+	constructor(public id: number, public name: string, public email: string, public address: object, public phone: string, public website: string, public company: object) {}
 }
